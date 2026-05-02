@@ -8,6 +8,8 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    clk = pygame.time.Clock()
+    dt =  0 
     while True:
         log_state()
         for event in pygame.event.get():
@@ -15,6 +17,9 @@ def main():
                 return
         screen.fill("black")
         pygame.display.flip()
+        delta_time = clk.tick(60)
+        dt = delta_time / 1000.0
+        # print(dt)
 
 
 if __name__ == "__main__":
