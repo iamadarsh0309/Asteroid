@@ -133,3 +133,14 @@ def log_event(event_type, **details):
         f.write(json.dumps(event) + "\n")
 
     _event_log_initialized = True
+
+
+def collides_with(self, other):
+    if not hasattr(self, "position") or not hasattr(other, "position"):
+        return False
+
+    if not hasattr(self, "radius") or not hasattr(other, "radius"):
+        return False
+
+    distance = self.position.distance_to(other.position)
+    return distance < (self.radius + other.radius)
